@@ -42,7 +42,7 @@ class InputWindow(QMainWindow, Ui_MainWindow):
     # списка(и из БД)
     def del_func(self):
 
-        con = sqlite3.connect('MyDB.db')
+        con = sqlite3.connect('GraphDB.db')
         cur = con.cursor()
 
         cur.execute('DELETE from func_table WHERE id = ?', (self.sender().id,)).fetchall()
@@ -53,7 +53,7 @@ class InputWindow(QMainWindow, Ui_MainWindow):
 
     # метод, обновляющий список функций
     def update_funcs(self):
-        con = sqlite3.connect('MyDB.db')
+        con = sqlite3.connect('GraphDB.db')
         cur = con.cursor()
 
         result = cur.execute('SELECT * from func_table').fetchall()
@@ -109,7 +109,7 @@ class InputWindow(QMainWindow, Ui_MainWindow):
     # метод, добавляющий новую функцию в БД и список
     def add_func(self):
 
-        con = sqlite3.connect('MyDB.db')
+        con = sqlite3.connect('GraphDB.db')
         cur = con.cursor()
 
         if self.func_input.text() != '':
